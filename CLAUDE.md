@@ -50,6 +50,26 @@ UI dialogs use Handlebars templates (`.hbs` files in `src/tpl/`) compiled at run
 
 Strict mode is enabled. Custom global types (e.g., `window.plugin`, IITC globals) are declared in `types/Types.ts`. The `types/handlebars.d.ts` file provides Handlebars type declarations.
 
+### Public API
+
+The plugin exposes two methods at `window.plugin.sync` for use by third-party plugins. See `docs/sync-api.md` for full developer documentation.
+
+```ts
+// Register a field (window.plugin[pluginName][fieldName]) for sync.
+// callback     — called after every poll and after remote data replaces local data (fullUpdated=true).
+// initCallback — called once when the Drive file is found/created and first load completes.
+window.plugin.sync.registerMapForSync(pluginName, fieldName, callback, initCallback)
+
+// Push changed keys to Drive immediately (returns false if field not registered).
+window.plugin.sync.updateMap(pluginName, fieldName, keyArray)
+```
+
+Key constraints:
+- The field must be a plain `Record<string, unknown>` at `window.plugin[pluginName][fieldName]`.
+- `updateMap` must be called after every mutation; otherwise sync waits for the 3-minute poll.
+- The plugin runs at **high priority** so `window.plugin.sync` is defined before normal plugins init, but still guard with `if (window.plugin.sync)`.
+- Types for the API are declared in `types/Globals.d.ts` (`SyncPluginApi`, `SyncCallback`, `SyncInitCallback`).
+
 ### ESLint conventions
 
 - Arrow functions are enforced (`prefer-arrow-functions` plugin)
