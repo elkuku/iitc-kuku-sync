@@ -1,0 +1,31 @@
+.sync-authButton-dimmed {
+    opacity: 0.5;
+}
+
+.sync-show-dialog-error {
+    color: #FF2222;
+}
+
+#sync-log {
+    height: 300px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    overflow-y: auto;
+}
+
+.sync-log-block {
+    background: #ffffff1a;
+    padding: 5px;
+    margin: 0.5em 0;
+}
+
+.sync-log-file {
+    margin: 0;
+}
+
+.sync-log-message {
+    margin: 0;
+    text-align: right;
+}

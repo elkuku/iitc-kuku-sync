@@ -1,8 +1,8 @@
 {
-  "name": "IITC plugin: IITC-Plugin-Template",
-  "id": "iitc_plugin_IITCPluginTemplate",
+  "name": "IITC plugin: Sync",
+  "id": "iitc_plugin_sync",
   "category": "Misc",
-  "description": "A plugin template",
+  "description": "Sync data between clients via Google Drive API. Only syncs data from specific plugins (currently: Keys, Bookmarks, Uniques). Sign in via the 'Sync' link. Data is synchronized every 3 minutes.",
   "author": "elkuku",
   "entry": "src/Main.ts",
   "minimize": false,
